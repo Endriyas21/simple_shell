@@ -37,22 +37,22 @@
 extern char **environ;
 
 /**
- * struct liststr - singl-link list
+ * struct liststr - single-link list
  * @num: numbering field
  * @str: string
- * @next: to be assigned as next node
+ * @next: to be assigned as the next node
  */
 typedef struct liststr
 {
-    int num;
-    char *str;
-    struct liststr *next;
+	int num;
+	char *str;
+	struct liststr *next;
 } list_t;
 
 /**
- * struct passinfo - includes pseudo-arguement that needs to be passed to our function,
- * alloww uniform prototype to the function pointer-struct
- * @arg: string which is generated from getline containing arguements
+ * struct passinfo - includes pseudo-argument that needs to be passed to our function,
+ * allow uniform prototype to the function pointer-struct
+ * @arg: string which is generated from getline containing arguments
  * @argv: array of strings produced from arg
  * @path: string path to current command
  * @argc: argument-count
@@ -73,32 +73,31 @@ typedef struct liststr
  */
 typedef struct passinfo
 {
-    char *arg;
-    char **argv;
-    char *path;
-    int argc;
-    unsigned int line_count;
-    int err_num;
-    int linecount_flag;
-    char *fname;
-    list_t *env;
-    list_t *history;
-    list_t *alias;
-    char **environ;
-    int env_changed;
-    int status;
+	char *arg;
+	char **argv;
+	char *path;
+	int argc;
+	unsigned int line_count;
+	int err_num;
+	int linecount_flag;
+	char *fname;
+	list_t *env;
+	list_t *history;
+	list_t *alias;
+	char **environ;
+	int env_changed;
+	int status;
 
-    char **cmd_buf;   /* pointer of the command ; chain_buffer,and memory allocation */
-    int cmd_buf_type; /* CMD_type ||, &&, ; */
-    int readfd;
-    int histcount;
+	char **cmd_buf;   /* pointer of the command ; chain_buffer, and memory allocation */
+	int cmd_buf_type; /* CMD_type ||, &&, ; */
+	int readfd;
+	int histcount;
 } info_t;
 
-#define INFO_INIT                                                               \
-    {                                                                           \
-        NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
-            0, 0, 0                                                             \
-    }
+#define INFO_INIT \
+	{ \
+		NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, 0, 0 \
+	}
 
 /**
  * struct builtin - has those builtin string along with related function
@@ -107,8 +106,8 @@ typedef struct passinfo
  */
 typedef struct builtin
 {
-    char *type;
-    int (*func)(info_t *);
+	char *type;
+	int (*func)(info_t *);
 } builtin_table;
 
 /* toem_parser.c */
@@ -123,7 +122,6 @@ char *_strcat(char *, char *);
 int _strlen(char *);
 
 /* toem_errors.c */
-
 int _eputchar(char);
 int _putsfd(char *str, int fd);
 int _putfd(char c, int fd);
@@ -163,7 +161,6 @@ int _isalpha(int);
 int is_dt(char, char *);
 
 /* toem_errors1.c */
-
 void print_error(info_t *, char *);
 int print_d(int, int);
 int _erratoi(char *);
@@ -193,7 +190,6 @@ void clear_info(info_t *);
 void free_info(info_t *, int);
 
 /* toem_environ.c */
-
 int _myenv(info_t *);
 int populate_env_list(info_t *);
 int _mysetenv(info_t *);
@@ -238,7 +234,6 @@ list_t *node_starts_with(list_t *, char *, char);
 ssize_t get_node_index(list_t *, list_t *);
 
 /* toem_lists.c */
-
 size_t print_list_str(const list_t *);
 int delete_node_at_index(list_t **, unsigned int);
 list_t *add_node(list_t **, const char *, int);
