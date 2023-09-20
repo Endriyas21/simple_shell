@@ -2,12 +2,11 @@
 
 /**
  * _myhistory - to show hist list, preceded
- *  by line num, beginig from 0.
+ * by line num, beginning from 0.
  * @info: Struct with potential arguments
- *  const fun proto.
- *  Return: 0
+ * const fun proto.
+ * Return: 0
  */
-
 int _myhistory(info_t *info)
 {
 	print_list(info->history);
@@ -32,7 +31,7 @@ int unset_alias(info_t *info, char *str)
 	d = *a;
 	*a = 0;
 	ret = delete_node_at_index(&(info->alias),
-			get_node_index(info->alias, node_starts_with(info->alias, str, -1)));
+		get_node_index(info->alias, node_starts_with(info->alias, str, -1)));
 	*a = d;
 	return (ret);
 }
@@ -42,9 +41,8 @@ int unset_alias(info_t *info, char *str)
  * @info: pm struct
  * @str: str alias
  *
- * Return:  0 for success and i to errors
+ * Return: 0 for success and i to errors
  */
-
 int set_alias(info_t *info, char *str)
 {
 	char *a;
@@ -54,6 +52,7 @@ int set_alias(info_t *info, char *str)
 		return (1);
 	if (!*++a)
 		return (unset_alias(info, str));
+
 	unset_alias(info, str);
 	return (add_node_end(&(info->alias), str, 0) == NULL);
 }
@@ -64,10 +63,9 @@ int set_alias(info_t *info, char *str)
  *
  * Return: 0 for success and i to errors
  */
-
 int print_alias(list_t *node)
 {
-	char *a = NULL, *a = NULL;
+	char *a;
 
 	if (node)
 	{
@@ -83,12 +81,11 @@ int print_alias(list_t *node)
 }
 
 /**
- * _myalias -alias built
+ * _myalias - alias built
  * @info: Struct with potential arguments
- *  const fun proto.
- *  Return: 0
+ * const fun proto.
+ * Return: 0
  */
-
 int _myalias(info_t *info)
 {
 	int i = 0;
