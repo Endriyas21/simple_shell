@@ -33,7 +33,6 @@
 
 #define HIST_FILE ".simple_shell_history"
 #define HIST_MAX 4096
-
 extern char **environ;
 
 /**
@@ -44,17 +43,17 @@ extern char **environ;
  */
 typedef struct liststr
 {
-	int num;
-	char *str;
-	struct liststr *next;
+    int num;
+    char *str;
+    struct liststr *next;
 } list_t;
 
 /**
- * struct passinfo - includes pseudo-argument that needs to be passed to our function,
- * allow uniform prototype to the function pointer-struct
+ * struct passinfo - includes pseudo-argument that needs to be passed to our
+ * function, allows uniform prototype to the function pointer-struct
  * @arg: string which is generated from getline containing arguments
  * @argv: array of strings produced from arg
- * @path: string path to current command
+ * @path: string path to the current command
  * @argc: argument-count
  * @line_count: error-count
  * @err_num: error code to the exit()s
@@ -65,7 +64,7 @@ typedef struct liststr
  * @history: history node
  * @alias: alias node
  * @env_changed: on if environ got changes
- * @status: return status of last exec'd command
+ * @status: return status of the last exec'd command
  * @cmd_buf: address of pointer for the cmd_buf, on if chaining
  * @cmd_buf_type: Command_type ||, &&, ;
  * @readfd: this is fd from where to read line input
@@ -73,41 +72,42 @@ typedef struct liststr
  */
 typedef struct passinfo
 {
-	char *arg;
-	char **argv;
-	char *path;
-	int argc;
-	unsigned int line_count;
-	int err_num;
-	int linecount_flag;
-	char *fname;
-	list_t *env;
-	list_t *history;
-	list_t *alias;
-	char **environ;
-	int env_changed;
-	int status;
+    char *arg;
+    char **argv;
+    char *path;
+    int argc;
+    unsigned int line_count;
+    int err_num;
+    int linecount_flag;
+    char *fname;
+    list_t *env;
+    list_t *history;
+    list_t *alias;
+    char **environ;
+    int env_changed;
+    int status;
 
-	char **cmd_buf;   /* pointer of the command ; chain_buffer, and memory allocation */
-	int cmd_buf_type; /* CMD_type ||, &&, ; */
-	int readfd;
-	int histcount;
+    char **cmd_buf;
+    int cmd_buf_type; /* CMD_type ||, &&, ; */
+    int readfd;
+    int histcount;
 } info_t;
 
-#define INFO_INIT \
-	{ \
-		NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, 0, 0 \
-	}
+#define INFO_INIT                                                               \
+{                                                                           \
+    NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
+    0, 0, 0                                                               \
+}
 
 /**
- * struct builtin - has those builtin string along with related function
+ * struct builtin - has hose builtin string along with the related function
  * @type: indicates the builtin command_flag
  * @func: refers to the function
  */
 typedef struct builtin
 {
-	char *type;
-	int (*func)(info_t *);
+    char *type;
+    int (*func)(info_t *);
 } builtin_table;
 
 /* toem_parser.c */
@@ -133,7 +133,6 @@ void _puts(char *);
 char *_strdup(const char *);
 char *_strcpy(char *, char *);
 int _putchar(char);
-
 /* toem_tokenize.c */
 char **strtow(char *, char *);
 char **strtow2(char *, char);
@@ -164,7 +163,6 @@ int is_dt(char, char *);
 void print_error(info_t *, char *);
 int print_d(int, int);
 int _erratoi(char *);
-
 void remove_comments(char *);
 char *convert_number(long int, int, int);
 

@@ -1,4 +1,5 @@
-# This file lists all contributors to the repository.
-
-Endriyas Zenagebriel <endriyas@uni.minerva.edu>
-Bereket Teferi <bereketteferi87@gmail.com>
+/**
+ * struct MyStruct - This file lists all contributors to the repository
+ * @member1: Endriyas Zenagebriel <endriyas@uni.minerva.edu>
+ * @member2: Bereket Teferi <bereketteferi87@gmail.com>
+ */
