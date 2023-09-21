@@ -43,9 +43,9 @@ extern char **environ;
  */
 typedef struct liststr
 {
-    int num;
-    char *str;
-    struct liststr *next;
+int num;
+char *str;
+struct liststr *next;
 } list_t;
 
 /**
@@ -72,31 +72,31 @@ typedef struct liststr
  */
 typedef struct passinfo
 {
-    char *arg;
-    char **argv;
-    char *path;
-    int argc;
-    unsigned int line_count;
-    int err_num;
-    int linecount_flag;
-    char *fname;
-    list_t *env;
-    list_t *history;
-    list_t *alias;
-    char **environ;
-    int env_changed;
-    int status;
+char *arg;
+char **argv;
+char *path;
+int argc;
+unsigned int line_count;
+int err_num;
+int linecount_flag;
+char *fname;
+list_t *env;
+list_t *history;
+list_t *alias;
+char **environ;
+int env_changed;
+int status;
 
-    char **cmd_buf;
-    int cmd_buf_type; /* CMD_type ||, &&, ; */
-    int readfd;
-    int histcount;
+char **cmd_buf;
+int cmd_buf_type; /* CMD_type ||, &&, ; */
+int readfd;
+int histcount;
 } info_t;
 
-#define INFO_INIT                                                               \
-{                                                                           \
-    NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
-    0, 0, 0                                                               \
+#define INFO_INIT \
+{ \
+NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
+0, 0, 0 \
 }
 
 /**
@@ -106,8 +106,8 @@ typedef struct passinfo
  */
 typedef struct builtin
 {
-    char *type;
-    int (*func)(info_t *);
+char *type;
+int (*func)(info_t *);
 } builtin_table;
 
 /* toem_parser.c */
@@ -169,73 +169,5 @@ char *convert_number(long int, int, int);
 /* toem_built.c */
 int _mydir(info_t *);
 int _exiter(info_t *);
-
-int _myhelp(info_t *);
-
-/* toem_built1.c */
-int _myalias(info_t *);
-int _myhistory(info_t *);
-
-/*toem_getline.c */
-ssize_t get_input(info_t *);
-void sigintHandler(int);
-int _getline(info_t *, char **, size_t *);
-
-/* toem_getinfo.c */
-void set_info(info_t *, char **);
-void clear_info(info_t *);
-
-void free_info(info_t *, int);
-
-/* toem_environ.c */
-int _myenv(info_t *);
-int populate_env_list(info_t *);
-int _mysetenv(info_t *);
-char *_getenv(info_t *, const char *);
-int _myunsetenv(info_t *);
-
-/* toem_history.c */
-char *get_history_file(info_t *info);
-int build_history_list(info_t *info, char *buf, int linecount);
-
-int renumber_history(info_t *info);
-int write_history(info_t *info);
-int read_history(info_t *info);
-
-/* toem_getenv.c */
-int _unsetenv(info_t *, char *);
-char **get_environ(info_t *);
-
-int _setenv(info_t *, char *, char *);
-
-/* toem_vars.c */
-int replace_alias(info_t *);
-int replace_vars(info_t *);
-int is_chain(info_t *, char *, size_t *);
-void check_chain(info_t *, char *, size_t *, size_t, size_t);
-
-int replace_string(char **, char *);
-
-/* toem_shloop.c */
-void find_cmd(info_t *);
-void fork_cmd(info_t *);
-int hsh(info_t *, char **);
-int find_builtin(info_t *);
-
-/* toem_lists1.c */
-char **list_to_strings(list_t *);
-size_t list_len(const list_t *);
-
-size_t print_list(const list_t *);
-list_t *node_starts_with(list_t *, char *, char);
-
-ssize_t get_node_index(list_t *, list_t *);
-
-/* toem_lists.c */
-size_t print_list_str(const list_t *);
-int delete_node_at_index(list_t **, unsigned int);
-list_t *add_node(list_t **, const char *, int);
-list_t *add_node_end(list_t **, const char *, int);
-void free_list(list_t **);
 
 #endif
