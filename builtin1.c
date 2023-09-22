@@ -51,7 +51,8 @@ int customSetAlias(shellInfo_t *shellInfo, char *aliasString)
 		return (customUnsetAlias(shellInfo, aliasString));
 
 	customUnsetAlias(shellInfo, aliasString);
-	return (addNodeEnd(&(shellInfo->aliasList), aliasString, 0) == NULL);
+	addNodeEnd(&(shellInfo->aliasList), aliasString, 0);
+	return 0;
 }
 
 /**

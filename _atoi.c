@@ -6,11 +6,10 @@
  *
  * Return: 1 if in interactive mode, 0 otherwise.
  */
-int isShellInteractive(info_t *infoStruct)
+int isShellInteractive(shellInfo_t *shellInfo)
 {
-	return (isatty(STDIN_FILENO) && infoStruct->readDescriptor <= 2);
+    return (isatty(STDIN_FILENO) && shellInfo->readDescriptor <= 2);
 }
-
 /**
  * isCharacterDelimiter - Checks if a character is a delimiter.
  * @character: The character to check.

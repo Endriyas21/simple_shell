@@ -9,7 +9,7 @@
  */
 int customExit(shellInfo_t *shellInfo)
 {
-	int exitStatus;
+	int exitStatus = 0;
 
 	if (shellInfo->args[1]) /* If there is an exit argument */
 	{
@@ -22,11 +22,12 @@ int customExit(shellInfo_t *shellInfo)
 			printNewLine();
 			return (1);
 		}
-		shellInfo->errorCode = customAtoi(shellInfo->args[1]);
-		return (-2);
+	        shellInfo->errorCode = exitStatus; 
 	}
-	shellInfo->errorCode = -1;
-	return (-2);
+	else{
+		shellInfo->errorCode = 0;
+	}
+      return exitStatus;
 }
 
 /**

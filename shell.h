@@ -34,6 +34,7 @@ typedef struct shellInfo {
     char *fname;
     int lineCount;
     char **argv;
+    int readDescriptor;
 } shellInfo_t;
 
 typedef struct info {
@@ -77,5 +78,13 @@ int runShell(shellInfo_t *shellInfo, char **av);
 int findAndExecuteBuiltin(shellInfo_t *shellInfo);
 void findAndExecuteCommand(shellInfo_t *shellInfo);
 void forkAndExecuteCommand(shellInfo_t *shellInfo);
+
+void printCommandList(list_t *list);
+int deleteNodeAtIndex(list_t **head, int index);
+int getNodeIndex(list_t *head, int index);
+list_t *nodeStartsWith(list_t *head, char *str, char endChar);
+char *customStrFindChar(char *str, char target);
+void customPutchar(char c);
+void customPuts(char *str);
 
 #endif
