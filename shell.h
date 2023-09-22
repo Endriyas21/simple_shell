@@ -14,6 +14,9 @@
 /* Constants for buffer sizes */
 #define WRITE_BUFFER_SIZE 1024
 #define BUFFER_FLUSH -1
+#define CONVERT_UNSIGNED 0x1
+#define CONVERT_LOWERCASE 0x2
+
 
 /* Data structures */
 typedef struct list {
@@ -23,15 +26,30 @@ typedef struct list {
 
 typedef struct shellInfo {
     char **environ;
-    list_t *environment;
+    list_t *environmentList;
     list_t *aliasList;
     list_t *commandHistory;
     int argc;
     char **args;
-   
+    char *fname;
+    int lineCount;
+    char **argv;
 } shellInfo_t;
 
+typedef struct info {
+    const char *fname;
+    int lineCount;
+    char **argv;
+} info_t;
+
 /* Function prototypes */
+void printStringList(char **list);
+char *customStartsWith(const char *str, const char *prefix);
+void customEputs(const char *string);
+int customSetEnv(shellInfo_t *shellInfo, const char *name, const char *value);
+int customUnsetEnv(shellInfo_t *shellInfo, const char *name);
+void addNodeEnd(list_t **head, const char *str, int num);
+
 int customEnv(shellInfo_t *shellInfo);
 char *customGetEnvironmentVariable(shellInfo_t *shellInfo, const char *variableName);
 int customSetEnvironmentVariable(shellInfo_t *shellInfo);
@@ -60,5 +78,4 @@ int findAndExecuteBuiltin(shellInfo_t *shellInfo);
 void findAndExecuteCommand(shellInfo_t *shellInfo);
 void forkAndExecuteCommand(shellInfo_t *shellInfo);
 
-
-#endif 
+#endif

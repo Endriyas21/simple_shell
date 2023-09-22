@@ -23,8 +23,7 @@ int customUnsetAlias(shellInfo_t *shellInfo, char *aliasString)
 {
 	char *equalSignPosition, character;
 	int result;
-
-	equalSignPosition = customStrchr(aliasString, '=');
+        equalSignPosition = customStrFindChar(aliasString, '=');
 	if (!equalSignPosition)
 		return (1);
 	character = *equalSignPosition;
@@ -45,8 +44,7 @@ int customUnsetAlias(shellInfo_t *shellInfo, char *aliasString)
 int customSetAlias(shellInfo_t *shellInfo, char *aliasString)
 {
 	char *equalSignPosition;
-
-	equalSignPosition = customStrchr(aliasString, '=');
+        equalSignPosition = customStrFindChar(aliasString, '=');
 	if (!equalSignPosition)
 		return (1);
 	if (!*++equalSignPosition)

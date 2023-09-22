@@ -1,4 +1,5 @@
 #include "shell.h"
+#include <limits.h>
 
 /**
  * customErrAtoi - Converts a string to an integer.
@@ -33,7 +34,7 @@ int customErrAtoi(char *str)
  * @info: The parameter and return info struct.
  * @errMsg: String indicating the error type.
  */
-void customPrintErrorMsg(info_t *info, char *errMsg)
+void customPrintErrorMsg(shellInfo_t *info, char *errMsg)
 {
 	customEputs(info->fname);
 	customEputs(": ");

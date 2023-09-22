@@ -6,7 +6,7 @@
  *
  * Return: Nothing.
  */
-void customEputs(char *string)
+void customEputs(const char *string)
 {
 	int index = 0;
 
