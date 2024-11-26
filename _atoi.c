@@ -8,7 +8,7 @@
  */
 int isShellInteractive(shellInfo_t *shellInfo)
 {
-    return (isatty(STDIN_FILENO) && shellInfo->readDescriptor <= 2);
+	return (isatty(STDIN_FILENO) && shellInfo->readDescriptor <= 2);
 }
 /**
  * isCharacterDelimiter - Checks if a character is a delimiter.
@@ -73,4 +73,30 @@ int stringToIntegerConverter(char *stringToConvert)
 		resultInteger = result;
 
 	return (resultInteger);
+}
+
+/**
+ * customAtoi - Converts a string to an integer.
+ * @str: The string to be converted.
+ *
+ * Return: The converted integer, or -1 on error.
+ */
+int customAtoi(char *str)
+{
+	int result = 0, sign = 1, i = 0;
+
+	if (str[0] == '-')
+	{
+		sign = -1;
+		i++;
+	}
+
+	for (; str[i] != '\0'; i++)
+	{
+		if (str[i] < '0' || str[i] > '9')
+			return -1;
+		result = result * 10 + (str[i] - '0');
+	}
+
+	return sign * result;
 }
