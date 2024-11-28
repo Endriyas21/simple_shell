@@ -2,7 +2,7 @@
 
 ## Overview
 
-`my_shell` is a simple Unix shell implementation written in C. It provides basic functionalities of a shell, including command execution, environment variable management, and support for built-in commands. This project aims to mimic the behavior of a Unix shell, allowing users to interact with the system through a command-line interface.
+`unix_shell` is a Unix shell implementation written in C. It provides basic functionalities of a shell, including command execution, environment variable management, and support for built-in commands. This project aims to mimic the behavior of a Unix shell, allowing users to interact with the system through a command-line interface.
 
 ## Features
 
@@ -132,9 +132,3 @@ The shell provides error messages for various invalid operations, such as:
 - Command not found
 - Invalid arguments for built-in commands
 - Permission denied
-
-## License
-
-This project is licensed under the MIT License.
-
-We welcome contributions from the community. If you would like to contribute, please fork the repository and submit a pull request.
